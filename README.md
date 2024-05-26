@@ -4,7 +4,10 @@ A collection of Fish shell functions useful for software development on Linux
 
 ## How to use
 
-`source dev.fish`
+```bash
+source dev.fish
+list_dev_commands
+```
 
 # Installation
 

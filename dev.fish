@@ -1,3 +1,8 @@
+function list_dev_commands
+    echo "list_dev_commands - Shows list of functions"
+    echo "spawn_environment_from_env - Takes an .env file and spawns a new fish shell terminal with the .env variables loaded"
+end
+
 function spawn_environment_from_env
     set -l env_file $argv[1]
     if test -f $env_file
