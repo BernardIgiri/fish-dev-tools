@@ -1,6 +1,5 @@
 function list_dev_commands
-    echo "list_dev_commands - Shows list of functions"
-    echo "spawn_environment_from_env - Takes an .env file and spawns a new fish shell terminal with the .env variables loaded"
+    glow commands.md
 end
 
 function spawn_environment_from_env
@@ -34,3 +33,10 @@ function spawn_environment_from_env
         echo "File $env_file does not exist."
     end
 end
+
+function ls_files_and_contents
+    set -l fd_command "fd $argv -x bash -c 'for file in \"\$@\"; do ls \"\$file\" | sed \"s/\$/:/\" && cat \"\$file\" && echo; done' bash"
+    eval $fd_command
+end
+
+
