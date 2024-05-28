@@ -1,5 +1,8 @@
 function list_dev_commands
-    glow commands.md
+    if not set -q MARKDOWN_RENDERER
+        set MARKDOWN_RENDERER "glow"
+    end
+    $MARKDOWN_RENDERER $DEV_COMMAND_HELP
 end
 
 function spawn_environment_from_env
