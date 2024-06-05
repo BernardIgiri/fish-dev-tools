@@ -42,4 +42,10 @@ function ls_files_and_contents
     eval $fd_command
 end
 
-
+function enable_debug_ptrace
+    set -l original_value (sysctl -n kernel.yama.ptrace_scope)
+    sudo sysctl kernel.yama.ptrace_scope=0
+    fish
+    echo "Reverting ptrace permissions..."
+    sudo sysctl kernel.yama.ptrace_scope=$original_value
+end

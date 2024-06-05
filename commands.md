@@ -27,3 +27,9 @@ fn main() {
 }
 
 ```
+
+## enable_debug_ptrace
+
+Creates a fish shell with ptrace set to allow process attachement for debugging, and disables this when you exit.
+
+**Usage:** `enable_debug_ptrace`
