@@ -33,3 +33,9 @@ fn main() {
 Creates a fish shell with ptrace set to allow process attachement for debugging, and disables this when you exit.
 
 **Usage:** `enable_debug_ptrace`
+
+## zd
+
+Calls zd with params and then runs pwd afterwards.
+
+**Usage:** `zd [some/folder]`

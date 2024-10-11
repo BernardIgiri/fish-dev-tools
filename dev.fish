@@ -1,6 +1,6 @@
 function list_dev_commands
     if not set -q MARKDOWN_RENDERER
-        set MARKDOWN_RENDERER "glow"
+        set MARKDOWN_RENDERER glow
     end
     $MARKDOWN_RENDERER $DEV_COMMAND_HELP
 end
@@ -48,4 +48,14 @@ function enable_debug_ptrace
     fish
     echo "Reverting ptrace permissions..."
     sudo sysctl kernel.yama.ptrace_scope=$original_value
+end
+
+function zd
+    if not type -q zoxide; or not type -q fzf
+        echo "Either zoxide or fzf is not installed."
+        echo "Please install zoxide (https://github.com/ajeetdsouza/zoxide) and fzf (https://github.com/junegunn/fzf)."
+        return 1
+    end
+    zi $argv
+    pwd
 end
