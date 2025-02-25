@@ -11,23 +11,18 @@ Install the following before use:
 
  * alternatively you can set MARKDOWN_RENDERER to another command to show markdown file contents. You can even set it to "cat"
 
-## Usage
+Optionally install the following for use of zd function:
 
-```bash
-set DEV_COMMAND_HELP path/to/commands.md
-source dev.fish
-list_dev_commands
-```
+ - [zoxide](https://github.com/ajeetdsouza/zoxide)
+ - [fzf](https://github.com/junegunn/fzf)
 
 ## Installation
 
-**Edit** `~/.config/fish/config.fish`
+Run the install script `./install.fish`
 
-```bash
-# Optionally add: set -e MARKDOWN_RENDERER "cat"
-set DEV_COMMAND_HELP path/to/commands.md
-source ~/path/to/dev.fish
-```
+## Help
+
+See help with `list_dev_commands`
 
 ## Commands
 
