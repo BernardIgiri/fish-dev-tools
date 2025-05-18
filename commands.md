@@ -30,7 +30,11 @@ fn main() {
 
 ## enable_debug_ptrace
 
-Creates a fish shell with ptrace set to allow process attachement for debugging, and disables this when you exit.
+Creates a fish shell with ptrace set to allow process attachement for debugging. This is set globally. This feature is disabled when when you exit the new shell.
+
+## enable_perf_testing
+
+Creates a fish shell with performance event access enabled for kernel profiling by users for debugging. This is set globally. This feature is disabled when when you exit the new shell.
 
 **Usage:** `enable_debug_ptrace`
 
@@ -39,3 +43,12 @@ Creates a fish shell with ptrace set to allow process attachement for debugging,
 Calls zd with params and then runs pwd afterwards.
 
 **Usage:** `zd [some/folder]`
+
+function enable_perf_testing
+    set -l original_value (sysctl -n kernel.perf_event_paranoid)
+    sudo sysctl kernel.perf_event_paranoid=1
+    fish
+    echo "🔄 Reverting perf event permissions..."
+    sudo sysctl kernel.perf_event_paranoid=$original_value
+end
+

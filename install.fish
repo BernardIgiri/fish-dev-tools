@@ -52,6 +52,15 @@ function enable_debug_ptrace
     sudo sysctl kernel.yama.ptrace_scope=$original_value
 end
 
+# Function: Temporarily enable performance testing
+function enable_perf_testing
+    set -l original_value (sysctl -n kernel.perf_event_paranoid)
+    sudo sysctl kernel.perf_event_paranoid=1
+    fish
+    echo "🔄 Reverting perf event permissions..."
+    sudo sysctl kernel.perf_event_paranoid=$original_value
+end
+
 # Install `zd` function only if prerequisites exist
 if type -q zoxide; and type -q fzf
     function zd
@@ -67,6 +76,7 @@ funcsave list_dev_commands
 funcsave spawn_environment_from_env
 funcsave ls_files_and_contents
 funcsave enable_debug_ptrace
+funcsave enable_perf_testing
 
 # Set paths
 set commands_md (realpath commands.md)
